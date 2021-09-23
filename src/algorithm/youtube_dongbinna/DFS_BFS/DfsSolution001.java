@@ -1,6 +1,5 @@
 package algorithm.youtube_dongbinna.DFS_BFS;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
