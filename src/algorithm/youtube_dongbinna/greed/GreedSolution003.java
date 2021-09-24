@@ -51,7 +51,10 @@ public class GreedSolution003 {
         int N = sc.nextInt();
         sc.nextLine();
         String fearStr = sc.nextLine(); // next()는 공백을 받아주지 않는다.
-        int[] fearIndex = Stream.of(fearStr.split(" ")).mapToInt(Integer::parseInt).toArray();
+        int[] fearIndex = Stream.of(fearStr.split(" "))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+
         Arrays.sort(fearIndex);
 
         for (int i = 0; i < fearIndex.length; i++) {

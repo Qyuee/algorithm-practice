@@ -1,6 +1,7 @@
 package algorithm.programmers.DFS_BFS;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * https://programmers.co.kr/learn/courses/30/lessons/42840?language=java
@@ -21,16 +22,9 @@ public class Lesson42840 {
         System.out.println(a[1]);
         System.out.println(a[2]);
 
-        test.sort((o1, o2) -> {
-            if (o1.getCount() > o2.getCount()) {
-                return -1;
-            } else {
-                return 1;
-            }
-        });
-
+        int max = Math.max(Math.max(test.get(0).getCount(), test.get(1).getCount()), test.get(2).getCount());
         int[] ints = test.stream().sorted(Comparator.comparingInt(Node::getCount).reversed())
-                .filter(node -> node.getCount() > 0)
+                .filter(node -> node.getCount() == max)
                 .map(Node::getIndex)
                 .mapToInt(value -> value)
                 .toArray();
@@ -46,6 +40,24 @@ public class Lesson42840 {
 
 
         System.out.println(result);
+    }
+
+    public Node calc(int[] personPattern, int num, int[] answers) {
+        int result = 0;
+        int index = 0;
+
+        for (int i = 0; i < answers.length; i++) {
+            if (personPattern[index] == answers[i]) {
+                result++;
+            }
+            index++;
+
+            if (i > 0 && ((i+1) % personPattern.length==0)) {
+                index = 0;
+            }
+        }
+        System.out.println("num:"+num+", result:"+result);
+        return new Node(num, result);
     }
 
     static class Node {
