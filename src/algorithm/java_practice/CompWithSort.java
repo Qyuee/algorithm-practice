@@ -82,10 +82,11 @@ public class CompWithSort {
 
         // 30 3
         // "303"과 "330"을 사전적 비교하여 결과를 확인 -> "303"이 사전적으로 더 앞서므로 -3(음수) 반환
-
-        int i = (str1 + str2).compareTo(str2 + str1);
+        // Arrays.sort()는 기본적으로 양수면 두 비교 데이터의 위치를 변경한다.
+        int i = (str1 + str2).compareTo(str2 + str1); // 이 경우는 303이 330보다 사전적으로 앞서므로 음수를 반환하고 데이터의 변경은 없다. 즉. 오름차순인 상황이다.
+        int j = (str2 + str1).compareTo(str1 + str2); // 이 경우는 330이 303보다 사전적으로 늦으므로 양수를 반환한다. 즉. 데이터의 변경이 발생한다. 즉. 내림차순이다.
         System.out.println(i);
-
+        System.out.println(j);
     }
 
     static class Test001 implements Comparable<Test001> {
